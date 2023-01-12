@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palindrome Checker</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body{
+            display: flex;
+            align-items: center;
+            justify-content:center;
+            min-height: 100vh;
+            background-color: rgba(0, 0, 0, 0.534);
+        }
+
+        .wrapper{
+            max-width: 500px;
+            background: rgb(175, 5, 5);
+            border-radius: 7px;
+            padding: 20px 25px 15px;
+        }
+
+        h1{
+            font-size: 30px;
+            font-weight: bold;
+            color: rgb(0, 0, 0);
+        }
+
+        .inputs{
+            margin: 20px 0 27px;
+        }
+
+        .inputs input{
+            width: 100%;
+            height: 60px;
+            outline: none;
+            font-size: 19px;
+            padding: 0 17px;
+            border-radius: 5px;
+            border: 1px solid #9989;
+            background: #383893;
+            color: aliceblue;
+        }
+
+        .inputs button{
+            width: 100%;
+            height: 56%;
+            outline: none;
+            border: none;
+            font-weight: bold;
+            margin-top: 20px;
+            font-size: 17px;
+            color: #ffff;
+             background-color: #070733;
+             border-radius: 5px;
+        }
+
+        .desc{
+            font-size: 25px;
+            text-align: center;
+            margin-bottom: 18px;
+            display: none;
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <h1>Palidrome Checker</h1>
+        <div class="inputs">
+            <input type="text" placeholder="Enter Text Or Number">
+            <button>Check Palindrome</button>
+        </div>    
+        <p class="desc"></p>
+    </div>
+
+    <script>
+     
+
+     function check_palindrome(str) 
+     {
+         let initialString = str.replace(/\W+|_/g, "").toLowerCase();
+         let reverseString = initialString.split("").reverse().join("");
+
+         if(initialString!=reverseString){
+             return false;
+         }
+
+         return true;
+     }
+
+     const txtInput = document.querySelector(".inputs input"),
+     checkBtn = document.querySelector(".inputs button"),
+     infoTxt = document.querySelector(".desc");
+
+     checkBtn.addEventListener("click" , () => {
+         if(txtInput.value.length===0){
+             infoTxt.style.display = "block";
+             infoTxt.style.color = "#8a743a"
+             infoTxt.innerHTML = "Enter Some Text"
+         }
+
+         else{
+             infoTxt.style.display = "block";
+             let ans = check_palindrome(txtInput.value)
+
+             if(ans==true){
+                 infoTxt.style.color = "#408643";
+                 infoTxt.innerHTML = "It's a palindrome"
+             }
+
+             else {
+                 infoTxt.style.color = "#ffff";
+                 infoTxt.innerHTML = "it's not a palindrome"
+             }
+         }
+     });
+
+     txtInput.addEventListener("keyup", () => {
+         infoTxt.style.display = "none";
+     });
+
+    </script>
+</body>
+</html>

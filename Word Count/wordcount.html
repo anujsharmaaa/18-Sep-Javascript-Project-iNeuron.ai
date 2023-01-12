@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible"
+        content = "IE=edge">
+        <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+        <title>
+            Word Count Web-Page
+        </title>
+        <style>
+         body{
+             background-color: #631652;
+             height: 100vh;
+             width: screen;
+             display: flex;
+             flex-direction: column;
+             justify-content: center;
+             align-items: center;
+         }
+
+
+         .heading{
+             font-size: 20px;
+             font-weight: bold;
+             color: rgb(255, 255, 255);
+             word-spacing: 0.1rem;
+             margin-bottom: 1.5%;
+         }
+
+         #color{
+             color: #ffff;
+         }
+         .content-box{
+             background-color:#030818;
+             height: 40%;
+             width: 45%;
+             display: flex;
+             flex-direction: column;
+             justify-content: flex-start;
+             align-items: center;
+             gap: 4%;
+             padding-top: 2%;
+         }
+
+         .resultSection{
+             display: flex;
+             flex-direction: row;
+             justify-content: flex-start;
+             width: 80%;
+             margin-left: 6%;
+             gap: 4%;
+             font-weight: 500;
+             font-size: 17px;
+         }
+
+         #userInput{
+             width: 90%;
+             height: 50%;
+         }
+
+        </style>
+    </head>
+    <body>
+        <div class="heading">
+            Word - Count
+        </div>
+        <div class="content-box">
+            <label for="formGroupExampleInput" class="form-label" id="color" >Input</label>
+            <textarea class = "userInput" id="userInput"></textarea>
+            <div class="resultSection">
+                <div id="color" >Characters:  <span class="charactersCount">0</span></div>
+                <div id="color" >Words <span class="wordsCount">0</span></div>
+            </div>
+        </div>
+
+        <script>
+            const userInput = document.querySelector("#userInput");
+            let charactersCount = document.querySelector(".charactersCount");
+            let wordsCount = document.querySelector(".wordsCount");
+            let charCountResult = 0;
+            let wordCountResult = 0;
+
+            userInput.addEventListener('input', () => {
+                if(userInput.value != ""){
+                    charCountResult = userInput.value.length;
+                    charactersCount.innerText = charCountResult;
+                    wordCountResult = userInput.value.trim(" ").split(" ").length;
+                    wordsCount.innerText = wordCountResult;
+                }
+                else{
+                    wordsCount.innerText = 0;
+                    characters.Count.innerText = 0;
+                }
+                })
+            
+        </script>
+
+    </body>
+</html>
